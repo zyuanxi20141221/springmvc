@@ -5,5 +5,4 @@
 
     <bean class="control.HelloWorldController" />
 
-
 </beans>
