@@ -1,7 +1,7 @@
-package test.container;
+package com.yidian;
 
+import com.yidian.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
-import test.container.model.Person;
 
 public class MyServiceImpl implements MyService {
 

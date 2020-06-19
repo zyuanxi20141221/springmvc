@@ -1,4 +1,4 @@
-package test.container;
+package com.yidian;
 
 public interface MyService {
 

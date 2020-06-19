@@ -10,7 +10,6 @@ public class HelloWorldController {
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public @ResponseBody String sayHello() {
-
         return "hello, springMVC from HelloWorldController";
     }
 }

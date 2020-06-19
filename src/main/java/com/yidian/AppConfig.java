@@ -1,11 +1,11 @@
-package test.container;
+package com.yidian;
 
+import com.yidian.model.Friend;
+import com.yidian.model.Person;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import test.container.model.Friend;
-import test.container.model.Person;
 
 @Configuration
 @ComponentScan("test.container")

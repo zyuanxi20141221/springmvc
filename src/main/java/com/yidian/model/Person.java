@@ -1,4 +1,4 @@
-package test.container.model;
+package com.yidian.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
