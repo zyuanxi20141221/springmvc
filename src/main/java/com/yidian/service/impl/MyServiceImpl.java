@@ -1,5 +1,6 @@
-package com.yidian;
+package com.yidian.service.impl;
 
+import com.yidian.MyService;
 import com.yidian.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 

@@ -9,7 +9,7 @@ public class HelloController implements Controller {
 
     public ModelAndView handleRequest(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/WEB-INF/jsp/hello.jsp");
+        modelAndView.setViewName("hello.jsp");
         return modelAndView;
     }
 }
