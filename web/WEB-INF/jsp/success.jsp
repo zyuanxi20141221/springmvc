@@ -6,7 +6,10 @@
 </head>
 <body>
 
-    hello springmvc from hello.jsp
+success jsp page <br>
+
+request:${requestScope.name}<br>
+session:${sessionScope.name}<br>
 
 </body>
 </html>

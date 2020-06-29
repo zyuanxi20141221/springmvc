@@ -19,6 +19,10 @@
         }
     </script>
 </head>
+
+request:username:${requestScope.username} <br>
+session:username:${sessionScope.username} <br>
+
 <body>
 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#F9D16B" class="tableBorder">
     <tr>
@@ -53,7 +57,7 @@
                                                                 <td width="2%">&nbsp;</td>
                                                                 <td width="100%" align="center" valign="top">
                                                                     <form name="form1" method="post"
-                                                                          action="loginAction!login">
+                                                                          action="/springmvc/user/loginSuccess.action">
                                                                         <table width="70%" border="0" cellpadding="0"
                                                                                cellspacing="0"
                                                                                bordercolorlight="#FFFFFF"

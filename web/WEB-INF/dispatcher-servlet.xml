@@ -1,45 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
     <!--处理器适配器，需实现Controller接口-->
-    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
+    <!--    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>-->
 
     <!--另一个非注解的处理器适配器， 需实现HttpRequestHandler接口-->
-    <bean class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter"/>
+    <!--    <bean class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter"/>-->
 
     <!--处理器映射器，将bean的name作为url查找，需要在配置Handler的时候指定beanname(就是url)-->
-    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
+    <!--    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>-->
 
     <!--简单url映射-->
-    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+    <!--    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">-->
 
-        <property name="mappings">
-            <props>
-                <prop key="/login_simple_url.action">loginController</prop>
-            </props>
+    <!--        <property name="mappings">-->
+    <!--            <props>-->
+    <!--                <prop key="/login_simple_url.action">loginController</prop>-->
+    <!--            </props>-->
+    <!--        </property>-->
+    <!--    </bean>-->
+
+    <context:component-scan base-package="com.yidian.control"/>
+
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${jdbc.driver}"/>
+        <property name="jdbcUrl" value="${jdbc.url}"/>
+        <property name="user" value="${jdbc.user}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+    <bean id="stringToDateConverter" class="com.yidian.converter.StringToDateConverter"/>
+
+    <!--把新建的类型转换器对象加入到工厂中-->
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <ref bean="stringToDateConverter"/>
+            </set>
         </property>
     </bean>
 
-    <!--注解处理器映射器-->
-    <bean  class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
+    <!--2.创建RequestMappingHandlerMapping-->
+    <!--    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>-->
 
-    <!--注解处理器适配器-->
-    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"  />
+    <!--3.创建RequestMappingHandlerAdapter-->
+    <!--    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>-->
+
+    <!--创建RequestMappingHandlerMapping对象-->
+    <mvc:annotation-driven conversion-service="conversionService"/>
 
     <!--视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/jsp/" />
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
     </bean>
 
-    <bean class="control.HelloWorldController"/>
-
-    <!--配置Handler-->
-    <bean name="/hello.action" class="control.HelloController"/>
-
-    <bean id="loginController" class="control.LoginController"/>
-
-    <bean class="control.RegisterController"/>
+    <!--    <bean id="loginController" class="com.yidian.control.LoginController"/>-->
 
 </beans>
