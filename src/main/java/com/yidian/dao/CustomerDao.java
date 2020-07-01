@@ -1,6 +1,6 @@
 package com.yidian.dao;
 
-import com.yidian.model.Customer;
+import com.yidian.domain.Customer;
 import java.util.List;
 
 public interface CustomerDao {

@@ -2,7 +2,7 @@ package com.yidian.dao.impl;
 
 import com.yidian.dao.CustomerDao;
 import org.springframework.stereotype.Repository;
-import com.yidian.model.Customer;
+import com.yidian.domain.Customer;
 import java.util.List;
 
 @Repository(value = "customerMysqlDao")

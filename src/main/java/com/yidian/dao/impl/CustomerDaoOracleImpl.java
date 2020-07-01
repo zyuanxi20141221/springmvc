@@ -1,7 +1,7 @@
 package com.yidian.dao.impl;
 
 import com.yidian.dao.CustomerDao;
-import com.yidian.model.Customer;
+import com.yidian.domain.Customer;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

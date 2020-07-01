@@ -1,5 +1,6 @@
 package com.yidian;
 
+import com.yidian.service.CustomerService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
